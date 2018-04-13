@@ -9,7 +9,7 @@ BOARD="teensylc"
 cd "`dirname -- "${0}"`"
 
 # Build firmware
-platformio run --target=""
+platformio run
 echo
 
 # Grab version string from Git

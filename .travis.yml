@@ -32,4 +32,4 @@ install:
     - pip install -U platformio
 
 script:
-    - platformio run --target=""
+    - platformio run
