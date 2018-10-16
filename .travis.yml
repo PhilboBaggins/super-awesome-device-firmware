@@ -25,12 +25,26 @@ matrix:
     - os: osx
       osx_image: xcode9.4
       env: INSTALL_PIO_WITH=homebrew
+    - os: windows
+      language: shell  # Travis' Windows image doesn't support `language: python` yet
+      env:
+          - INSTALL_PY2_WITH=choco
+          - INSTALL_PIO_WITH=pip
 
 cache:
     directories:
         - "~/.platformio"
 
 install:
+    - |
+      if [ $INSTALL_PY2_WITH = "choco" ]; then
+          choco install python2
+
+          # The command above should add Python to the PATH environment variable and running Chocolatey's `refreshenv`
+          # script reload that variable in the shell but for some reason that doesn't work ... perhaps because we're
+          # running bash. Anyway the following ugly hack is working for now.
+          export PATH="$PATH:C:\\Python27\\Scripts\\"
+      fi
     - |
       if [ $INSTALL_PIO_WITH = "pip" ]; then
           pip install -U platformio
