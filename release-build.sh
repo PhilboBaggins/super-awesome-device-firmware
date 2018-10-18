@@ -6,7 +6,7 @@ set -o errexit # (set -e) Exit if any statement returns non-true value
 BOARD="teensylc"
 
 # Change to directory script resides in
-cd "`dirname -- "${0}"`"
+cd "$(dirname -- "${0}")"
 
 # Build firmware
 platformio run
