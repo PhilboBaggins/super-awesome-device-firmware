@@ -24,6 +24,7 @@ matrix:
       env: INSTALL_PIO_WITH=pip
     - os: osx
       osx_image: xcode9.4
+      language: python
       env: INSTALL_PIO_WITH=homebrew
     - os: windows
       language: shell  # Travis' Windows image doesn't support `language: python` yet
